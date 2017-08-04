@@ -1,0 +1,32 @@
+<section class="panel">
+  <p class="panel-heading">
+    Please digit a number
+  </p>
+  <div class="panel-block">
+    <form [formGroup]="searchForm">
+      <div class="field has-addons">
+        <div class="control">
+          <input formControlName="search" class="input" type="text" placeholder="number here...">
+        </div>
+        <div class="control">
+          <button (click)="calculate()" class="button is-info is-fullwidth" [ngClass]="{ 'is-loading': primeService.loading }">
+            Calculate
+          </button>
+          <label for="client_side">
+            client-side calculation ?
+            <input formControlName="isClientSide" id="client_side" type="checkbox" [(ngModel)]="isClientSide">
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<div *ngIf="results && results.length > 0 && !primeService.loading" class="container">
+  <h3>Results</h3>
+  <ul class="results">
+    <li class="" *ngFor="let result of results">
+      {{result}}
+    </li>
+  </ul>
+</div>
